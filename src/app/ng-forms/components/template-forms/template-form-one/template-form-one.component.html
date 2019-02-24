@@ -1,0 +1,125 @@
+<div class="card form-container">
+  <h2 class="is-size-2 has-text-centered">Template Form One</h2>
+  <hr class="divider">
+  <div class="card-content">
+    <form #form="ngForm" (ngSubmit)="formSubmit(form)">
+
+      <app-input-error [control]="basicFormOneName" [submitted]="submitted">
+        <label class="label" for="basicFormOneName">Name</label>
+        <div class="control">
+          <input
+            #basicFormOneName="ngModel"
+            type="text"
+            class="input"
+            name="basicFormOneName"
+            id="basicFormOneName"
+            required
+            [(ngModel)]="basicFormOne.name">
+        </div>
+      </app-input-error>
+
+      <app-input-error [control]="basicFormOneEmail" [submitted]="submitted">
+        <label class="label" for="basicFormOneEmail">Email</label>
+        <div class="control">
+          <input
+            #basicFormOneEmail="ngModel"
+            type="email"
+            class="input"
+            name="basicFormOneEmail"
+            id="basicFormOneEmail"
+            required
+            [(ngModel)]="basicFormOne.email">
+        </div>
+      </app-input-error>
+
+      <app-input-error [control]="basicFormOnePhone" [submitted]="submitted">
+        <label class="label" for="basicFormOnePhone">Phone Number</label>
+        <div class="control">
+          <input
+            #basicFormOnePhone="ngModel"
+            type="tel"
+            class="input"
+            name="basicFormOnePhone"
+            id="basicFormOnePhone"
+            required
+            [(ngModel)]="basicFormOne.phoneNumber">
+        </div>
+      </app-input-error>
+
+      <div class="field">
+        <label class="label">Gender</label>
+        <div class="control">
+          <ng-container *ngFor="let gender of genderAnswers">
+            <label class="radio">
+              <input
+                type="radio"
+                name="basicFormOneGender"
+                id="basicFormOneGender{{gender}}"
+                required
+                [value]="gender"
+                [(ngModel)]="basicFormOne.gender">
+              {{gender}}
+            </label>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Hobbies</label>
+        <div class="control checkbox-vertical">
+          <ng-container *ngFor="let hobby of hobbiesAnswers, let i = index">
+            <label class="checkbox">
+              <input
+                #hobbies
+                type="checkbox"
+                name="basicFormOneGender"
+                id="basicFormOneGender{{hobby}}"
+                required
+                (change)="addCheckedValues(hobbies.checked, i, hobby)"
+              >
+              {{hobby}}
+            </label>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="basicFormOneStarSigns">Star Sign</label>
+        <div class="control">
+          <div class="select">
+            <select
+              name="basicFormOneStarSigns"
+              id="basicFormOneStarSigns"
+              required
+              [(ngModel)]="basicFormOne.starSign">
+              <ng-container *ngFor="let sign of starSignAnswers">
+                <option>{{sign}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <app-input-error [control]="basicFormOneAbout" [submitted]="submitted">
+        <label class="label" for="basicFormOneAbout">About you</label>
+        <div class="control">
+          <textarea
+            #basicFormOneAbout="ngModel"
+            type="text"
+            class="textarea"
+            name="basicFormOneAbout"
+            id="basicFormOneAbout"
+            rows="4"
+            required
+            [(ngModel)]="basicFormOne.aboutYou"
+          ></textarea>
+        </div>
+      </app-input-error>
+
+      <div class="form-buttons">
+        <button class="button is-outlined is-primary" type="submit">Submit</button>
+      </div>
+
+    </form>
+  </div>
+</div>

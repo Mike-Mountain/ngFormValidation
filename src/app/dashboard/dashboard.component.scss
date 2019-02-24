@@ -1,0 +1,26 @@
+@import "../../scss/partials/mixins/widget-box";
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+}
+
+.widget {
+  width: 24%;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.widget-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.template {
+  @include widgetBox(rgb(252,88,47));
+}
+
+.reactive {
+  @include widgetBox(rgb(40,81,127));
+}

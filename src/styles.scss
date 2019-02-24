@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bulma";
+
+html,
+body {
+  height: 100%;
+}
+
+.custom-container {
+  padding: .5rem 2rem;
+}
+
+.form-container {
+  width: 75%;
+  margin: 2rem auto;
+}
+
+.select {
+  width: 100%;
+  select {
+    width: 100%;
+  }
+}
+
+textarea {
+  width: 100%;
+}
+
+.checkbox-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+}

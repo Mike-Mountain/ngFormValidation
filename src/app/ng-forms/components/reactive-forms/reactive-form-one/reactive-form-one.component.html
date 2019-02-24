@@ -1,0 +1,107 @@
+<div class="card form-container">
+  <h2 class="is-size-2 has-text-centered">Reactive Form One</h2>
+  <hr class="divider">
+  <div class="card-content">
+    <form (ngSubmit)="formSubmit(basicFormOne)" [formGroup]="basicFormOne">
+
+      <app-input-error [control]="basicFormOne.controls['name']" [submitted]="submitted">
+        <label class="label" for="basicFormOneName">Name</label>
+        <div class="control">
+          <input
+            type="text"
+            class="input"
+            id="basicFormOneName"
+            formControlName="name">
+        </div>
+      </app-input-error>
+
+      <app-input-error [control]="basicFormOne.controls['email']" [submitted]="submitted">
+        <label class="label" for="basicFormOneEmail">Email</label>
+        <div class="control">
+          <input
+            type="email"
+            class="input"
+            id="basicFormOneEmail"
+            formControlName="email">
+        </div>
+      </app-input-error>
+
+      <app-input-error [control]="basicFormOne.controls['phoneNumber']" [submitted]="submitted">
+        <label class="label" for="basicFormOnePhone">Phone Number</label>
+        <div class="control">
+          <input
+            type="tel"
+            class="input"
+            id="basicFormOnePhone"
+            formControlName="phoneNumber">
+        </div>
+      </app-input-error>
+
+      <div class="field">
+        <label class="label">Gender</label>
+        <div class="control">
+          <ng-container *ngFor="let gender of genderAnswers">
+            <label class="radio">
+              <input
+                type="radio"
+                id="basicFormOneGender{{gender}}"
+                formControlName="gender"
+                [value]="gender">
+              {{gender}}
+            </label>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Hobbies</label>
+        <div class="control checkbox-vertical">
+          <ng-container *ngFor="let hobby of hobbiesAnswers, let i = index">
+            <label class="checkbox">
+              <input
+                #hobbies
+                type="checkbox"
+                id="basicFormOneGender{{hobby}}"
+                (change)="addCheckedValues(hobbies.checked, i, hobby)"
+              >
+              {{hobby}}
+            </label>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="basicFormOneStarSigns">Star Sign</label>
+        <div class="control">
+          <div class="select">
+            <select
+              formControlName="starSign"
+              id="basicFormOneStarSigns">
+              <ng-container *ngFor="let sign of starSignAnswers">
+                <option [value]="sign">{{sign}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <app-input-error [control]="basicFormOne.controls['aboutYou']" [submitted]="submitted">
+        <label class="label" for="basicFormOneAbout">About you</label>
+        <div class="control">
+          <textarea
+            type="text"
+            class="textarea"
+            id="basicFormOneAbout"
+            rows="4"
+            formControlName="aboutYou"
+          ></textarea>
+        </div>
+      </app-input-error>
+
+      <div class="form-buttons">
+        <button class="button is-outlined is-primary" type="submit">Submit</button>
+      </div>
+
+    </form>
+  </div>
+</div>
